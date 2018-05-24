@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Diagnostics;
 
 namespace AutomatZeStosem
 {
@@ -43,6 +44,11 @@ namespace AutomatZeStosem
             }
         }
 
+        public int pobierzStan(int numerStanu, int numerZnaku)
+        {
+            return tabelka[numerStanu, numerZnaku];
+        }
+
         public int pobierzNastepnyStan(int numerStanu, char znak)
         {
             int numerZnaku = zbiorZnakow.IndexOf(znak);
@@ -56,5 +62,18 @@ namespace AutomatZeStosem
                 if (tabelka[0, i] != -1 || tabelka[0, i] != -2) throw new Exception("Znak końcowy wskazuje na stan inny niż akceptowalny lub nieakceptowalny!");
             }
         }
+
+        public void wypisz()
+        {
+            for(int i = 0;i < liczbaStanow; i++)
+            {
+                for(int j = 0; j < liczbaZnakow; j++)
+                {
+                    Debug.Write(tabelka[i,j] + ", ");
+                }
+                Debug.WriteLine("");
+            }
+        }
+
     }
 }
