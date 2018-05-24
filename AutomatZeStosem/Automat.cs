@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using System.Text;
 using System.Threading.Tasks;
 using System.Diagnostics;
 
@@ -13,13 +12,11 @@ namespace AutomatZeStosem
         Tabelka tabelka;
         private Stack<char> stos;
         private int stan;
-        private bool akceptacja;
 
         public Automat(Tabelka tabelka)
         {
             this.tabelka = tabelka;
             stos = new Stack<char>();
-            akceptacja = true;
         }
 
         private void Działaj(char znak)
@@ -35,7 +32,7 @@ namespace AutomatZeStosem
             stan = 0;
             Debug.WriteLine(stan);
             int i = 0;
-            while (stan != -1 && wyraz[i] != '$' && stan != -2)
+            while (stan != -1 && stan != -2)
             {
                 Działaj(wyraz[i]);
                 i++;
