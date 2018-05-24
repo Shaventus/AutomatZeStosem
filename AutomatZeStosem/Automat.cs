@@ -28,9 +28,9 @@ namespace AutomatZeStosem
             {
                 if(znak == zst[i])
                 {
-                    for (int j = 0; ij < szs.Count(); j++)
+                    for (int j = 0; j < szs.Count(); j++)
                     {
-                        if (stan == szs[j);
+                        //if (stan == szs[j];
                         stos.Push(znak);
                         stan = szs[i];
                     }
