@@ -55,7 +55,6 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="SampleClass.cs" />
     <Compile Include="Tabelka.cs" />
     <Compile Include="TabelkaStos.cs" />
     <EmbeddedResource Include="Form1.resx">
