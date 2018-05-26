@@ -18,8 +18,8 @@ namespace AutomatZeStosem
         private Automat automat;
         private int krok;
         private List<String> list;
-        private string screenHeight;
-        private string screenWidth;
+        private string screenWidth = Screen.PrimaryScreen.Bounds.Width.ToString();
+        private string screenHeight = Screen.PrimaryScreen.Bounds.Height.ToString();
 
         public Form1()
         {

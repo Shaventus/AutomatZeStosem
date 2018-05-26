@@ -96,16 +96,19 @@
             // 
             this.wszystko.HeaderText = "$";
             this.wszystko.Name = "wszystko";
+            this.wszystko.ReadOnly = true;
             // 
             // a
             // 
             this.a.HeaderText = "a";
             this.a.Name = "a";
+            this.a.ReadOnly = true;
             // 
             // b
             // 
             this.b.HeaderText = "b";
             this.b.Name = "b";
+            this.b.ReadOnly = true;
             // 
             // button1
             // 

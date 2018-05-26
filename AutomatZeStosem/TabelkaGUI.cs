@@ -25,14 +25,22 @@ namespace AutomatZeStosem
 
         public static void usunOstatniRzad(DataGridView tabelka)
         {
-            if (tabelka.Rows.Count == 0) throw new Exception("Brak rzędów!");
-            tabelka.Rows.RemoveAt(tabelka.Rows.Count - 1);
+            int liczbaRzedow = tabelka.Rows.Count;
+            liczbaRzedow -= 2;
+            if (liczbaRzedow == -1) // tylko jeden rząd
+            {
+                throw new Exception("Nie możesz usunąć ostatniego rzędu!");
+            }
+            if (liczbaRzedow < 0) throw new Exception("Brak rzędów!");
+            tabelka.Rows.RemoveAt(tabelka.Rows[liczbaRzedow].Index);
         }
 
         public static void usunOstatniaKolumne(DataGridView tabelka)
         {
-            if (tabelka.Columns.Count == 0) throw new Exception("Brak kolumn!");
-            tabelka.Columns.RemoveAt(tabelka.Columns.Count - 1);
+            int liczbaKolumn = tabelka.Columns.Count;
+            liczbaKolumn -= 1;
+            if (liczbaKolumn < 0) throw new Exception("Brak kolumn!");
+            tabelka.Columns.RemoveAt(tabelka.Columns[liczbaKolumn].Index);
         }
 
         public static void zaznaczKomorke(DataGridView tabelka, int x, int y)
