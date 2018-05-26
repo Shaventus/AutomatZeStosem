@@ -14,6 +14,8 @@ namespace AutomatZeStosem
         TabelkaStos tstos;
         private Stack<char> stos;
         private int stan;
+        private List<String> list;
+        private String slist;
 
         public Automat(TabelkaStanow tabelka, TabelkaStanow tabelkaStos, TabelkaStos tstos)
         {
@@ -23,13 +25,24 @@ namespace AutomatZeStosem
             stos = new Stack<char>();
         }
 
+        public void PrzypiszList(List<String> list)
+        {
+            this.list = list;
+        }
+
+        public List<String> PobierzList()
+        {
+            return list;
+        }
+
         private void Działaj(char znak)
         {
             Debug.WriteLine(stos.Peek());
             stan = tstos.pobierzNastepnyStan(stan, stos.Peek());
             stan = tabelka.pobierzNastepnyStan(stan, znak);
-
-            if(stan != -2 && stan != -1)
+            slist = String.Concat(slist, " Stos: " + stos.Peek().ToString());
+            slist = String.Concat(slist, " Stan: " + stan);
+            if (stan != -2 && stan != -1)
             {
                 if (tabelkaStos.pobierzNastepnyStan(stan, znak) == 1)
                 {
@@ -51,10 +64,15 @@ namespace AutomatZeStosem
             stan = 0;
             Debug.WriteLine(stan);
             int i = 0;
+            list = new List<String>();
             while (stan != -1 && stan != -2 && stos.Count() != 0)
             {
+                slist = "";
+                slist = String.Concat(slist, "Krok: " + i);
+                slist = String.Concat(slist, " Znak: " + wyraz[i]);
                 Działaj(wyraz[i]);
                 i++;
+                list.Add(slist);
             }
 
             if(stan == -2)

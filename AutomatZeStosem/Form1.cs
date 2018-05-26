@@ -14,6 +14,8 @@ namespace AutomatZeStosem
     {
         private String wyraz;
         private Automat automat;
+        private int krok;
+        private List<String> list;
 
         public Form1()
         {
@@ -34,7 +36,7 @@ namespace AutomatZeStosem
             stos.wklejStan(new List<int> { 2, -1, -1 }, 2);
 
             automat = new Automat(tabelka, tabelkaStos, stos);
-
+            automat.PrzypiszList(list);
             InitializeComponent();
             /*
             DataGridViewRow row = (DataGridViewRow)dataGridView1.Rows[0].Clone();
@@ -51,7 +53,7 @@ namespace AutomatZeStosem
                 {
                     row.Cells[j].Value = tabelka.pobierzStan(j,i);
                 }
-                row.HeaderCell.Value = tabelka.pobierzZnak(i).ToString();
+                row.HeaderCell.Value = "q" + i.ToString();
                 dataGridView1.Rows.Add(row);
             }
 
@@ -62,7 +64,7 @@ namespace AutomatZeStosem
                 {
                     row.Cells[j].Value = tabelkaStos.pobierzStan(j, i);
                 }
-                row.HeaderCell.Value = tabelkaStos.pobierzZnak(i).ToString();
+                row.HeaderCell.Value = "q" + i.ToString();
                 dataGridView2.Rows.Add(row);
             }
 
@@ -73,7 +75,7 @@ namespace AutomatZeStosem
                 {
                     row.Cells[j].Value = stos.pobierzStan(j, i);
                 }
-                row.HeaderCell.Value = stos.pobierzZnak(i).ToString();
+                row.HeaderCell.Value = "q" + i.ToString();
                 dataGridView3.Rows.Add(row);
             }
         }
@@ -90,6 +92,7 @@ namespace AutomatZeStosem
 
         private void textBox1_TextChanged(object sender, EventArgs e)
         {
+            krok = 0;
             wyraz = textBox1.Text;
         }
 
@@ -142,8 +145,13 @@ namespace AutomatZeStosem
                 stos.wklejStan(list, i);
             }
 
+            listView1.Clear();
             automat = new Automat(tabelka, tabelkaStos, stos);
             wynik.Text = "Wynik: " + automat.Operacja(wyraz);
+            for(int i = 0; i < automat.PobierzList().Count(); i++)
+            {
+                listView1.Items.Add(new ListViewItem(automat.PobierzList()[i]));
+            }
         }
 
         private void dataGridView2_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -152,6 +160,21 @@ namespace AutomatZeStosem
         }
 
         private void dataGridView3_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            krok++;
+        }
+
+        private void listView1_SelectedIndexChanged(object sender, EventArgs e)
         {
 
         }

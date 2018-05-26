@@ -62,6 +62,7 @@ namespace AutomatZeStosem
         public virtual int pobierzNastepnyStan(int numerStanu, char znak)
         {
             int numerZnaku = zbiorZnakow.IndexOf(znak);
+            if(numerZnaku == -1) throw new Exception("Nie ma takiego znaku uwzględnionego!");
             return tabelka[numerZnaku, numerStanu];
         }
 
