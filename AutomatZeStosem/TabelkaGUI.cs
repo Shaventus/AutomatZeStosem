@@ -58,5 +58,29 @@ namespace AutomatZeStosem
                 throw new ArgumentOutOfRangeException("x = " + x.ToString() + ", y = " + y.ToString(), e);
             }
         }
+
+        public static bool czyIstniejeRzad(DataGridView tabelka, string nazwaRzedu)
+        {
+            foreach (DataGridViewRow rzad in tabelka.Rows)
+            {
+                if (rzad.HeaderCell.Value == null) continue;
+                if (rzad.HeaderCell.Value.ToString() == nazwaRzedu) return true;
+            }
+            return false;
+        }
+
+        public static bool czyIstniejeKolumna(DataGridView tabelka, string nazwaKolumny)
+        {
+            foreach (DataGridViewRow rzad in tabelka.Rows)
+            {
+                if (rzad.HeaderCell.Value.ToString() == nazwaKolumny) return true;
+            }
+            return false;
+        }
+
+        public static int pobierzLiczbeStanow(DataGridView tabelka)
+        {
+            return tabelka.Columns.Count;
+        }
     }
 }

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.VisualBasic;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -8,6 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
+
 namespace AutomatZeStosem
 {
     public partial class Form1 : Form
@@ -16,6 +18,8 @@ namespace AutomatZeStosem
         private Automat automat;
         private int krok;
         private List<String> list;
+        private string screenHeight;
+        private string screenWidth;
 
         public Form1()
         {
@@ -177,6 +181,68 @@ namespace AutomatZeStosem
         private void listView1_SelectedIndexChanged(object sender, EventArgs e)
         {
 
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            if (TabelkaGUI.pobierzLiczbeStanow(dataGridView1) == 0)
+            {
+                MessageBox.Show("Najpierw dodaj stany");
+                return;
+            }
+
+            string input = String.Empty;
+            while (String.IsNullOrEmpty(input))
+            {
+                try
+                {
+                    input = Interaction.InputBox("Dozwolone symbole a-z0-9 oraz $ (znak pusty)", "Podaj znak", String.Empty, (Int32.Parse(screenWidth) / 2) - 150, (Int32.Parse(screenHeight) / 2) - 100);
+                    if (input == String.Empty) break;
+                    char c = Char.Parse(input);
+                    if ((c >= 'a' && c <= 'z') || (c >= '0' && c <= '9') || c == '$')
+                    {
+                        if (!TabelkaGUI.czyIstniejeRzad(dataGridView1, input)) TabelkaGUI.dodajRzad(dataGridView1, input);
+                        else MessageBox.Show("Taki znak już istnieje!");
+                    }
+                    else
+                    {
+                        MessageBox.Show("Niedozwolony symbol!");
+                    }
+                }
+                catch (FormatException)
+                {
+                    MessageBox.Show("Możesz podać pojedyńczy symbol!");
+                }
+            }
+        }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            TabelkaGUI.dodajKolumne(dataGridView1, "q" + (TabelkaGUI.pobierzLiczbeStanow(dataGridView1)).ToString());
+        }
+
+        private void button6_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                TabelkaGUI.usunOstatniRzad(dataGridView1);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+        private void button7_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                TabelkaGUI.usunOstatniaKolumne(dataGridView1);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
     }
 }
