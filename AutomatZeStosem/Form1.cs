@@ -12,29 +12,8 @@ namespace AutomatZeStosem
 {
     public partial class Form1 : Form
     {
-        private String wyraz;
-        private Automat automat;
-
         public Form1()
         {
-            // a^n b^n
-            TabelkaStanow tabelka = new TabelkaStanow(3, 3, new List<Char> { '$', 'a', 'b' });
-            tabelka.wklejStan(new List<int> { -1, 0, 1 }, 0);
-            tabelka.wklejStan(new List<int> { -1, -1, 1 }, 1);
-            tabelka.wklejStan(new List<int> { -2, -1, -1 }, 2);
-
-            TabelkaStanow tabelkaStos = new TabelkaStanow(3, 3, new List<Char> { '$', 'a', 'b' });
-            tabelkaStos.wklejStan(new List<int> { 0, 1, 2 }, 0);
-            tabelkaStos.wklejStan(new List<int> { 0, 0, 2 }, 1);
-            tabelkaStos.wklejStan(new List<int> { 0, 0, 0 }, 2);
-
-            TabelkaStos stos = new TabelkaStos(3, 3, new List<Char> { '#', 'a', 'b' });
-            stos.wklejStan(new List<int> { 0, 0, -1 }, 0);
-            stos.wklejStan(new List<int> { 2, 1, -1 }, 1);
-            stos.wklejStan(new List<int> { 2, -1, -1 }, 2);
-
-            automat = new Automat(tabelka, tabelkaStos, stos);
-
             InitializeComponent();
             /*
             DataGridViewRow row = (DataGridViewRow)dataGridView1.Rows[0].Clone();
