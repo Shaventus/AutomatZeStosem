@@ -22,6 +22,7 @@ namespace AutomatZeStosem
             this.zbiorZnakow = zbiorZnakow;
         }
 
+
         public virtual void inicjuj()
         {
             tabelka = new int[liczbaZnakow, liczbaStanow];
@@ -53,6 +54,11 @@ namespace AutomatZeStosem
             return tabelka[numerZnaku, numerStanu];
         }
 
+        public virtual char pobierzZnak(int numerZnaku)
+        {
+            return zbiorZnakow[numerZnaku];
+        }
+
         public virtual int pobierzNastepnyStan(int numerStanu, char znak)
         {
             int numerZnaku = zbiorZnakow.IndexOf(znak);
@@ -79,12 +85,12 @@ namespace AutomatZeStosem
             }
         }
 
-        public virtual int getliczbaStanow()
+        public virtual int pobierzliczbaStanow()
         {
             return liczbaStanow;
         }
 
-        public virtual int getliczbaZnakow()
+        public virtual int pobierzliczbaZnakow()
         {
             return liczbaZnakow;
         }

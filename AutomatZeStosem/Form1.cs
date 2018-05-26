@@ -44,34 +44,36 @@ namespace AutomatZeStosem
 
             dataGridView1.Rows.Add(row);
             */
-
-            for(int i = 0; i < tabelka.getliczbaZnakow(); i++)
+            for (int i = 0; i < tabelka.pobierzliczbaZnakow(); i++)
             {
                 DataGridViewRow row = (DataGridViewRow)dataGridView1.Rows[i].Clone();
-                for (int j = 0;j < tabelka.getliczbaStanow(); j++)
+                for (int j = 0;j < tabelka.pobierzliczbaStanow(); j++)
                 {
                     row.Cells[j].Value = tabelka.pobierzStan(j,i);
                 }
+                row.HeaderCell.Value = tabelka.pobierzZnak(i).ToString();
                 dataGridView1.Rows.Add(row);
             }
 
-            for (int i = 0; i < tabelkaStos.getliczbaZnakow(); i++)
+            for (int i = 0; i < tabelkaStos.pobierzliczbaZnakow(); i++)
             {
                 DataGridViewRow row = (DataGridViewRow)dataGridView2.Rows[i].Clone();
-                for (int j = 0; j < tabelkaStos.getliczbaStanow(); j++)
+                for (int j = 0; j < tabelkaStos.pobierzliczbaStanow(); j++)
                 {
                     row.Cells[j].Value = tabelkaStos.pobierzStan(j, i);
                 }
+                row.HeaderCell.Value = tabelkaStos.pobierzZnak(i).ToString();
                 dataGridView2.Rows.Add(row);
             }
 
-            for (int i = 0; i < stos.getliczbaZnakow(); i++)
+            for (int i = 0; i < stos.pobierzliczbaZnakow(); i++)
             {
                 DataGridViewRow row = (DataGridViewRow)dataGridView3.Rows[i].Clone();
-                for (int j = 0; j < stos.getliczbaStanow(); j++)
+                for (int j = 0; j < stos.pobierzliczbaStanow(); j++)
                 {
                     row.Cells[j].Value = stos.pobierzStan(j, i);
                 }
+                row.HeaderCell.Value = stos.pobierzZnak(i).ToString();
                 dataGridView3.Rows.Add(row);
             }
         }
@@ -115,7 +117,7 @@ namespace AutomatZeStosem
                 }
                 tabelka.wklejStan(list, i);
             }
-
+            //TabelkaGUI.dodajRzad(dataGridView1, "aaa");
             TabelkaStanow tabelkaStos = new TabelkaStanow(dataGridView2.Columns.Count, dataGridView2.Rows.Count - 1, new List<Char> { '$', 'a', 'b' });
 
             for (int i = 0; i < dataGridView2.Columns.Count; i++)

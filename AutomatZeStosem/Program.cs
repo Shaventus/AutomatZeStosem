@@ -36,6 +36,7 @@ namespace AutomatZeStosem
             */
 
             // a^n b^n
+            /*
             TabelkaStanow tabelka = new TabelkaStanow(3, 3, new List<Char> { '$', 'a', 'b'});
             tabelka.wklejStan(new List<int> { -1, 0, 1}, 0);
             tabelka.wklejStan(new List<int> { -1, -1, 1}, 1);
@@ -56,6 +57,7 @@ namespace AutomatZeStosem
             Automat automat = new Automat(tabelka, tabelkaStos, stos);
             String wyraz = "aaabbb";
             Debug.WriteLine(automat.Operacja(wyraz));
+            */
 
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
