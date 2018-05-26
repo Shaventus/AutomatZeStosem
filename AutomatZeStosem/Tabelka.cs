@@ -78,15 +78,5 @@ namespace AutomatZeStosem
                 Debug.WriteLine("");
             }
         }
-
-        public virtual int getliczbaStanow()
-        {
-            return liczbaStanow;
-        }
-
-        public virtual int getliczbaZnakow()
-        {
-            return liczbaZnakow;
-        }
     }
 }
