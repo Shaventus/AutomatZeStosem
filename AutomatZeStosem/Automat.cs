@@ -9,13 +9,13 @@ namespace AutomatZeStosem
 {
     class Automat
     {
-        Tabelka tabelka;
-        Tabelka tabelkaStos;
+        TabelkaStanow tabelka;
+        TabelkaStanow tabelkaStos;
         TabelkaStos tstos;
         private Stack<char> stos;
         private int stan;
 
-        public Automat(Tabelka tabelka, Tabelka tabelkaStos, TabelkaStos tstos)
+        public Automat(TabelkaStanow tabelka, TabelkaStanow tabelkaStos, TabelkaStos tstos)
         {
             this.tabelka = tabelka;
             this.tabelkaStos = tabelkaStos;

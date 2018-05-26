@@ -36,12 +36,12 @@ namespace AutomatZeStosem
             */
 
             // a^n b^n
-            Tabelka tabelka = new Tabelka(3, 3, new List<Char> { '$', 'a', 'b'});
+            TabelkaStanow tabelka = new TabelkaStanow(3, 3, new List<Char> { '$', 'a', 'b'});
             tabelka.wklejStan(new List<int> { -1, 0, 1}, 0);
             tabelka.wklejStan(new List<int> { -1, -1, 1}, 1);
             tabelka.wklejStan(new List<int> { -2, -1, -1}, 2);
 
-            Tabelka tabelkaStos = new Tabelka(3, 3, new List<Char> { '$', 'a', 'b' });
+            TabelkaStanow tabelkaStos = new TabelkaStanow(3, 3, new List<Char> { '$', 'a', 'b' });
             tabelkaStos.wklejStan(new List<int> { 0, 1, 2 }, 0);
             tabelkaStos.wklejStan(new List<int> { 0, 0, 2 }, 1);
             tabelkaStos.wklejStan(new List<int> { 0, 0, 0 }, 2);
