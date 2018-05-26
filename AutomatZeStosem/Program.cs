@@ -49,7 +49,7 @@ namespace AutomatZeStosem
             TabelkaStos stos = new TabelkaStos(3, 3, new List<Char> { '#', 'a', 'b'});
             stos.wklejStan(new List<int> { 0, 0, -1}, 0);
             stos.wklejStan(new List<int> { 2, 1 , -1}, 1);
-            stos.wklejStan(new List<int> { -2, -1, -1 }, 2);
+            stos.wklejStan(new List<int> { 2, -1, -1 }, 2);
 
             tabelka.wypisz();
 
