@@ -56,7 +56,8 @@ namespace AutomatZeStosem
                 DataGridViewRow row = (DataGridViewRow)dataGridView1.Rows[i].Clone();
                 for (int j = 0;j < tabelka.pobierzliczbaStanow(); j++)
                 {
-                    row.Cells[j].Value = tabelka.pobierzStan(i,j);
+                    int symbol = tabelka.pobierzStan(i, j);
+                    row.Cells[j].Value = (symbol == -1 ? "N" : (symbol == -2 ? "A" : symbol.ToString()));
                 }
                 row.HeaderCell.Value = tabelka.pobierzZnak(i).ToString();
                 dataGridView1.Rows.Add(row);
@@ -67,7 +68,8 @@ namespace AutomatZeStosem
                 DataGridViewRow row = (DataGridViewRow)dataGridView2.Rows[i].Clone();
                 for (int j = 0; j < tabelkaStos.pobierzliczbaStanow(); j++)
                 {
-                    row.Cells[j].Value = tabelkaStos.pobierzStan(i, j);
+                    int symbol = tabelkaStos.pobierzStan(i, j);
+                    row.Cells[j].Value = (symbol == -1 ? "N" : (symbol == -2 ? "A" : symbol.ToString()));
                 }
                 row.HeaderCell.Value = tabelkaStos.pobierzZnak(i).ToString();
                 dataGridView2.Rows.Add(row);
@@ -78,7 +80,8 @@ namespace AutomatZeStosem
                 DataGridViewRow row = (DataGridViewRow)dataGridView3.Rows[i].Clone();
                 for (int j = 0; j < stos.pobierzliczbaStanow(); j++)
                 {
-                    row.Cells[j].Value = stos.pobierzStan(i, j);
+                    int symbol = stos.pobierzStan(i, j);
+                    row.Cells[j].Value = (symbol == -1 ? "N" : (symbol == -2 ? "A" : symbol.ToString()));
                 }
                 row.HeaderCell.Value = stos.pobierzZnak(i).ToString();
                 dataGridView3.Rows.Add(row);
@@ -116,7 +119,6 @@ namespace AutomatZeStosem
             try
             {
                 // a^n b^n
-                TabelkaStanow tabelka = new TabelkaStanow(dataGridView1.Columns.Count, dataGridView1.Rows.Count - 1, new List<Char> { '$', 'a', 'b' });
                 List<char> list = new List<char>();
                 foreach (DataGridViewRow rzad in dataGridView1.Rows)
                 {
@@ -128,8 +130,9 @@ namespace AutomatZeStosem
                     {
                         continue;
                     }
-                    
+
                 }
+                TabelkaStanow tabelka = new TabelkaStanow(dataGridView1.Columns.Count, dataGridView1.Rows.Count - 1, list);
 
                 for (int i = 0; i < dataGridView1.Columns.Count; i++)
                 {
@@ -138,7 +141,10 @@ namespace AutomatZeStosem
                     {
                         try
                         {
-                            listint.Add(Int32.Parse(this.dataGridView1[i, j].Value.ToString()));
+                            string symbol = this.dataGridView1[i, j].Value.ToString().ToUpper();
+                            if (symbol == "N") symbol = "-1";
+                            if (symbol == "A") symbol = "-2";
+                            listint.Add(Int32.Parse(symbol));
                         }
                         catch (Exception)
                         {
@@ -167,7 +173,10 @@ namespace AutomatZeStosem
                     List<int> listint = new List<int>();
                     for (int j = 0; j < dataGridView2.Rows.Count - 1; j++)
                     {
-                        listint.Add(Int32.Parse(this.dataGridView2[i, j].Value.ToString()));
+                        string symbol = this.dataGridView2[i, j].Value.ToString().ToUpper();
+                        if (symbol == "N") symbol = "-1";
+                        if (symbol == "A") symbol = "-2";
+                        listint.Add(Int32.Parse(symbol));
                     }
                     tabelkaStos.wklejStan(listint, i);
                 }
@@ -193,7 +202,10 @@ namespace AutomatZeStosem
                     List<int> listint = new List<int>();
                     for (int j = 0; j < dataGridView3.Rows.Count - 1; j++)
                     {
-                        listint.Add(Int32.Parse(this.dataGridView3[i, j].Value.ToString()));
+                        string symbol = this.dataGridView3[i, j].Value.ToString().ToUpper();
+                        if (symbol == "N") symbol = "-1";
+                        if (symbol == "A") symbol = "-2";
+                        listint.Add(Int32.Parse(symbol));
                     }
                     stos.wklejStan(listint, i);
                 }
@@ -201,7 +213,8 @@ namespace AutomatZeStosem
                 listView1.Clear();
                 automat = new Automat(tabelka, tabelkaStos, stos);
                 automat.waliduj(wyraz);
-                wynik.Text = "Wynik: " + automat.Operacja(wyraz, dataGridView1, dataGridView2, dataGridView3);
+                bool wynik_bool = automat.Operacja(wyraz, dataGridView1, dataGridView2, dataGridView3);
+                wynik.Text = "Wynik: " + (wynik_bool ? "Stan Akceptowalny" : "Stan Nieakceptowalny");
 
                 for (int i = 0; i < automat.PobierzList().Count(); i++)
                 {
