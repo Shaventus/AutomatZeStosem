@@ -54,6 +54,11 @@ namespace AutomatZeStosem
             return tabelka[numerZnaku, numerStanu];
         }
 
+        public virtual int pobierzNumerZnaku(char znak)
+        {
+            return zbiorZnakow.IndexOf(znak);
+        }
+
         public virtual char pobierzZnak(int numerZnaku)
         {
             return zbiorZnakow[numerZnaku];

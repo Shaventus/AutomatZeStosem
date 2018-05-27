@@ -151,7 +151,9 @@ namespace AutomatZeStosem
 
             listView1.Clear();
             automat = new Automat(tabelka, tabelkaStos, stos);
-            wynik.Text = "Wynik: " + automat.Operacja(wyraz, dataGridView1);
+
+            wynik.Text = "Wynik: " + automat.Operacja(wyraz, dataGridView1, dataGridView2, dataGridView3);
+
             for(int i = 0; i < automat.PobierzList().Count(); i++)
             {
                 listView1.Items.Add(new ListViewItem(automat.PobierzList()[i]));
