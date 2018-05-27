@@ -48,6 +48,7 @@ namespace AutomatZeStosem
             try
             {
                 tabelka.CurrentCell = tabelka[x, y];
+                tabelka.Refresh();
             }
             catch (ArgumentOutOfRangeException e)
             {
@@ -89,6 +90,16 @@ namespace AutomatZeStosem
         public static int pobierzLiczbeStanow(DataGridView tabelka)
         {
             return tabelka.Columns.Count;
+        }
+
+        public static int pobierzIndeksZnaku(DataGridView tabelka, string znak)
+        {
+            for (int i=0; i<tabelka.Rows.Count; i++)
+            {
+                if (tabelka.Rows[i].HeaderCell.Value.ToString() == znak) return i;
+            }
+
+            return -1;
         }
     }
 }

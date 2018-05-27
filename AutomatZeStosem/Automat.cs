@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Diagnostics;
+using System.Windows.Forms;
 
 namespace AutomatZeStosem
 {
@@ -57,13 +58,14 @@ namespace AutomatZeStosem
             Debug.WriteLine(stan);
         }
 
-        public bool Operacja(String wyraz)
+        public bool Operacja(String wyraz, DataGridView tabelka)
         {
             wyraz = String.Concat(wyraz, "$");
             stos.Push('#');
             stan = 0;
             Debug.WriteLine(stan);
             int i = 0;
+            int y = 0;
             list = new List<String>();
             while (stan != -1 && stan != -2 && stos.Count() != 0)
             {
@@ -73,9 +75,13 @@ namespace AutomatZeStosem
                 Działaj(wyraz[i]);
                 i++;
                 list.Add(slist);
+
+                y = TabelkaGUI.pobierzIndeksZnaku(tabelka, wyraz[i].ToString());
+                TabelkaGUI.zaznaczKomorke(tabelka, stan, y);
+                System.Threading.Thread.Sleep(750);
             }
 
-            if(stan == -2)
+            if (stan == -2)
             {
                 return true;
             }
