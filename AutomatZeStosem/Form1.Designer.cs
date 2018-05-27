@@ -31,18 +31,9 @@
             this.label1 = new System.Windows.Forms.Label();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.wszystko = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.a = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.b = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.button1 = new System.Windows.Forms.Button();
             this.dataGridView2 = new System.Windows.Forms.DataGridView();
-            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.a1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.b1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridView3 = new System.Windows.Forms.DataGridView();
-            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.a2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.b2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.automatLabel = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
@@ -55,6 +46,15 @@
             this.button5 = new System.Windows.Forms.Button();
             this.button6 = new System.Windows.Forms.Button();
             this.button7 = new System.Windows.Forms.Button();
+            this.wszystko = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.a = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.b = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.a1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.b1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.a2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.b2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView3)).BeginInit();
@@ -92,24 +92,6 @@
             this.dataGridView1.TabIndex = 2;
             this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             // 
-            // wszystko
-            // 
-            this.wszystko.HeaderText = "$";
-            this.wszystko.Name = "wszystko";
-            this.wszystko.ReadOnly = true;
-            // 
-            // a
-            // 
-            this.a.HeaderText = "a";
-            this.a.Name = "a";
-            this.a.ReadOnly = true;
-            // 
-            // b
-            // 
-            this.b.HeaderText = "b";
-            this.b.Name = "b";
-            this.b.ReadOnly = true;
-            // 
             // button1
             // 
             this.button1.Location = new System.Drawing.Point(197, 11);
@@ -133,21 +115,6 @@
             this.dataGridView2.TabIndex = 4;
             this.dataGridView2.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView2_CellContentClick);
             // 
-            // Column1
-            // 
-            this.Column1.HeaderText = "$";
-            this.Column1.Name = "Column1";
-            // 
-            // a1
-            // 
-            this.a1.HeaderText = "a";
-            this.a1.Name = "a1";
-            // 
-            // b1
-            // 
-            this.b1.HeaderText = "b";
-            this.b1.Name = "b1";
-            // 
             // dataGridView3
             // 
             this.dataGridView3.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
@@ -160,21 +127,6 @@
             this.dataGridView3.Size = new System.Drawing.Size(364, 150);
             this.dataGridView3.TabIndex = 5;
             this.dataGridView3.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView3_CellContentClick);
-            // 
-            // Column2
-            // 
-            this.Column2.HeaderText = "#";
-            this.Column2.Name = "Column2";
-            // 
-            // a2
-            // 
-            this.a2.HeaderText = "a";
-            this.a2.Name = "a2";
-            // 
-            // b2
-            // 
-            this.b2.HeaderText = "b";
-            this.b2.Name = "b2";
             // 
             // automatLabel
             // 
@@ -298,6 +250,54 @@
             this.button7.UseVisualStyleBackColor = true;
             this.button7.Click += new System.EventHandler(this.button7_Click);
             // 
+            // wszystko
+            // 
+            this.wszystko.HeaderText = "q0";
+            this.wszystko.Name = "wszystko";
+            this.wszystko.ReadOnly = true;
+            // 
+            // a
+            // 
+            this.a.HeaderText = "q1";
+            this.a.Name = "a";
+            this.a.ReadOnly = true;
+            // 
+            // b
+            // 
+            this.b.HeaderText = "q2";
+            this.b.Name = "b";
+            this.b.ReadOnly = true;
+            // 
+            // Column1
+            // 
+            this.Column1.HeaderText = "q0";
+            this.Column1.Name = "Column1";
+            // 
+            // a1
+            // 
+            this.a1.HeaderText = "q1";
+            this.a1.Name = "a1";
+            // 
+            // b1
+            // 
+            this.b1.HeaderText = "q2";
+            this.b1.Name = "b1";
+            // 
+            // Column2
+            // 
+            this.Column2.HeaderText = "q0";
+            this.Column2.Name = "Column2";
+            // 
+            // a2
+            // 
+            this.a2.HeaderText = "q1";
+            this.a2.Name = "a2";
+            // 
+            // b2
+            // 
+            this.b2.HeaderText = "q2";
+            this.b2.Name = "b2";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -344,16 +344,7 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label wynik;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn a1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn b1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn a2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn b2;
         private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn wszystko;
-        private System.Windows.Forms.DataGridViewTextBoxColumn a;
-        private System.Windows.Forms.DataGridViewTextBoxColumn b;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.ListView listView1;
@@ -361,6 +352,15 @@
         private System.Windows.Forms.Button button5;
         private System.Windows.Forms.Button button6;
         private System.Windows.Forms.Button button7;
+        private System.Windows.Forms.DataGridViewTextBoxColumn wszystko;
+        private System.Windows.Forms.DataGridViewTextBoxColumn a;
+        private System.Windows.Forms.DataGridViewTextBoxColumn b;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn a1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn b1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn a2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn b2;
     }
 }
 

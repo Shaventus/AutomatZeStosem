@@ -55,9 +55,9 @@ namespace AutomatZeStosem
                 DataGridViewRow row = (DataGridViewRow)dataGridView1.Rows[i].Clone();
                 for (int j = 0;j < tabelka.pobierzliczbaStanow(); j++)
                 {
-                    row.Cells[j].Value = tabelka.pobierzStan(j,i);
+                    row.Cells[j].Value = tabelka.pobierzStan(i,j);
                 }
-                row.HeaderCell.Value = "q" + i.ToString();
+                row.HeaderCell.Value = tabelka.pobierzZnak(i).ToString();
                 dataGridView1.Rows.Add(row);
             }
 
@@ -66,9 +66,9 @@ namespace AutomatZeStosem
                 DataGridViewRow row = (DataGridViewRow)dataGridView2.Rows[i].Clone();
                 for (int j = 0; j < tabelkaStos.pobierzliczbaStanow(); j++)
                 {
-                    row.Cells[j].Value = tabelkaStos.pobierzStan(j, i);
+                    row.Cells[j].Value = tabelkaStos.pobierzStan(i, j);
                 }
-                row.HeaderCell.Value = "q" + i.ToString();
+                row.HeaderCell.Value = tabelkaStos.pobierzZnak(i).ToString();
                 dataGridView2.Rows.Add(row);
             }
 
@@ -77,9 +77,9 @@ namespace AutomatZeStosem
                 DataGridViewRow row = (DataGridViewRow)dataGridView3.Rows[i].Clone();
                 for (int j = 0; j < stos.pobierzliczbaStanow(); j++)
                 {
-                    row.Cells[j].Value = stos.pobierzStan(j, i);
+                    row.Cells[j].Value = stos.pobierzStan(i, j);
                 }
-                row.HeaderCell.Value = "q" + i.ToString();
+                row.HeaderCell.Value = stos.pobierzZnak(i).ToString();
                 dataGridView3.Rows.Add(row);
             }
         }
@@ -120,7 +120,7 @@ namespace AutomatZeStosem
                 List<int> list = new List<int>();
                 for (int j = 0; j < dataGridView1.Rows.Count - 1; j++)
                 {
-                    list.Add(Int32.Parse(this.dataGridView1[j, i].Value.ToString()));
+                    list.Add(Int32.Parse(this.dataGridView1[i, j].Value.ToString()));
                 }
                 tabelka.wklejStan(list, i);
             }
@@ -132,7 +132,7 @@ namespace AutomatZeStosem
                 List<int> list = new List<int>();
                 for (int j = 0; j < dataGridView2.Rows.Count - 1; j++)
                 {
-                    list.Add(Int32.Parse(this.dataGridView2[j, i].Value.ToString()));
+                    list.Add(Int32.Parse(this.dataGridView2[i, j].Value.ToString()));
                 }
                 tabelkaStos.wklejStan(list, i);
             }
@@ -144,7 +144,7 @@ namespace AutomatZeStosem
                 List<int> list = new List<int>();
                 for (int j = 0; j < dataGridView3.Rows.Count - 1; j++)
                 {
-                    list.Add(Int32.Parse(this.dataGridView3[j, i].Value.ToString()));
+                    list.Add(Int32.Parse(this.dataGridView3[i, j].Value.ToString()));
                 }
                 stos.wklejStan(list, i);
             }
