@@ -36,7 +36,7 @@ namespace AutomatZeStosem
             return list;
         }
 
-        private void Działaj(char znak, DataGridView ptabelka, DataGridView ptabelkastos, DataGridView pstos)
+        private void Działaj(char znak, DataGridView ptabelka, DataGridView ptabelkastos, DataGridView pstos, int opoznienie)
         {
             int y = 0;
             Debug.WriteLine(stos.Peek());
@@ -46,10 +46,9 @@ namespace AutomatZeStosem
             {
                 y = TabelkaGUI.pobierzIndeksZnaku(ptabelkastos, znak.ToString());
                 TabelkaGUI.zaznaczKomorke(ptabelkastos, stan, y);
-                System.Threading.Thread.Sleep(750);
+                System.Threading.Thread.Sleep(opoznienie);
                 y = TabelkaGUI.pobierzIndeksZnaku(ptabelka, znak.ToString());
                 TabelkaGUI.zaznaczKomorke(ptabelka, stan, y);
-                //System.Threading.Thread.Sleep(250);
 
                 stan = tabelka.pobierzNastepnyStan(stan, znak);
 
@@ -77,7 +76,7 @@ namespace AutomatZeStosem
             Debug.WriteLine("stan3:" + stan);
         }
 
-        public bool Operacja(String wyraz, DataGridView ptabelka, DataGridView ptabelkastos, DataGridView pstos)
+        public bool Operacja(String wyraz, DataGridView ptabelka, DataGridView ptabelkastos, DataGridView pstos, int opoznienie)
         {
             wyraz = String.Concat(wyraz, "$");
             stos.Push('#');
@@ -91,7 +90,7 @@ namespace AutomatZeStosem
                 slist = String.Concat(slist, "Krok: " + i);
                 slist = String.Concat(slist, " Znak: " + wyraz[i]);
 
-                Działaj(wyraz[i], ptabelka, ptabelkastos, pstos);
+                Działaj(wyraz[i], ptabelka, ptabelkastos, pstos, opoznienie);
                 //TabelkaGUI.zaznaczKomorke(tabelka, stan, y);
                 //int x = this.tabelka.pobierzNumerZnaku(wyraz[i]);
                 //TabelkaGUI.zaznaczKomorke(tabelka, x, y);

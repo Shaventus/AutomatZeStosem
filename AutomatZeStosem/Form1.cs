@@ -213,7 +213,9 @@ namespace AutomatZeStosem
                 listView1.Clear();
                 automat = new Automat(tabelka, tabelkaStos, stos);
                 automat.waliduj(wyraz);
-                bool wynik_bool = automat.Operacja(wyraz, dataGridView1, dataGridView2, dataGridView3);
+
+                int opoznienie = (int)this.numericUpDown1.Value;
+                bool wynik_bool = automat.Operacja(wyraz, dataGridView1, dataGridView2, dataGridView3, opoznienie);
                 wynik.Text = "Wynik: " + (wynik_bool ? "Stan Akceptowalny" : "Stan Nieakceptowalny");
 
                 for (int i = 0; i < automat.PobierzList().Count(); i++)
