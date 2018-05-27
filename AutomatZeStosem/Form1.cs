@@ -117,46 +117,85 @@ namespace AutomatZeStosem
             {
                 // a^n b^n
                 TabelkaStanow tabelka = new TabelkaStanow(dataGridView1.Columns.Count, dataGridView1.Rows.Count - 1, new List<Char> { '$', 'a', 'b' });
+                List<char> list = new List<char>();
+                foreach (DataGridViewRow rzad in dataGridView1.Rows)
+                {
+                    try
+                    {
+                        list.Add(Char.Parse(rzad.HeaderCell.Value.ToString()));
+                    }
+                    catch (NullReferenceException)
+                    {
+                        continue;
+                    }
+                    
+                }
 
                 for (int i = 0; i < dataGridView1.Columns.Count; i++)
                 {
-                    List<int> list = new List<int>();
+                    List<int> listint = new List<int>();
                     for (int j = 0; j < dataGridView1.Rows.Count - 1; j++)
                     {
                         try
                         {
-                            list.Add(Int32.Parse(this.dataGridView1[i, j].Value.ToString()));
+                            listint.Add(Int32.Parse(this.dataGridView1[i, j].Value.ToString()));
                         }
+                        catch (Exception)
                         {
                             MessageBox.Show("Uzupełnij wszystkie pola!");
                             return;
                         }
                     }
-                    tabelka.wklejStan(list, i);
+                    tabelka.wklejStan(listint, i);
                 }
-                //TabelkaGUI.dodajRzad(dataGridView1, "aaa");
-                TabelkaStanow tabelkaStos = new TabelkaStanow(dataGridView2.Columns.Count, dataGridView2.Rows.Count - 1, new List<Char> { '$', 'a', 'b' });
+
+                foreach (DataGridViewRow rzad in dataGridView2.Rows)
+                {
+                    try
+                    {
+                        list.Add(Char.Parse(rzad.HeaderCell.Value.ToString()));
+                    }
+                    catch (NullReferenceException)
+                    {
+                        continue;
+                    }
+                }
+                TabelkaStanow tabelkaStos = new TabelkaStanow(dataGridView2.Columns.Count, dataGridView2.Rows.Count - 1, list);
 
                 for (int i = 0; i < dataGridView2.Columns.Count; i++)
                 {
-                    List<int> list = new List<int>();
+                    List<int> listint = new List<int>();
                     for (int j = 0; j < dataGridView2.Rows.Count - 1; j++)
                     {
-                        list.Add(Int32.Parse(this.dataGridView2[i, j].Value.ToString()));
+                        listint.Add(Int32.Parse(this.dataGridView2[i, j].Value.ToString()));
                     }
-                    tabelkaStos.wklejStan(list, i);
+                    tabelkaStos.wklejStan(listint, i);
                 }
 
-                TabelkaStos stos = new TabelkaStos(dataGridView3.Columns.Count, dataGridView3.Rows.Count - 1, new List<Char> { '#', 'a', 'b' });
+                list = new List<char>();
+
+                foreach (DataGridViewRow rzad in dataGridView3.Rows)
+                {
+                    try
+                    {
+                        list.Add(Char.Parse(rzad.HeaderCell.Value.ToString()));
+                    }
+                    catch (NullReferenceException)
+                    {
+                        continue;
+                    }
+                }
+
+                TabelkaStos stos = new TabelkaStos(dataGridView3.Columns.Count, dataGridView3.Rows.Count - 1, list);
 
                 for (int i = 0; i < dataGridView3.Columns.Count; i++)
                 {
-                    List<int> list = new List<int>();
+                    List<int> listint = new List<int>();
                     for (int j = 0; j < dataGridView3.Rows.Count - 1; j++)
                     {
-                        list.Add(Int32.Parse(this.dataGridView3[i, j].Value.ToString()));
+                        listint.Add(Int32.Parse(this.dataGridView3[i, j].Value.ToString()));
                     }
-                    stos.wklejStan(list, i);
+                    stos.wklejStan(listint, i);
                 }
 
                 listView1.Clear();
