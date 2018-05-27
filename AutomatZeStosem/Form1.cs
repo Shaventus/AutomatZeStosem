@@ -201,7 +201,12 @@ namespace AutomatZeStosem
                     char c = Char.Parse(input);
                     if ((c >= 'a' && c <= 'z') || (c >= '0' && c <= '9') || c == '$')
                     {
-                        if (!TabelkaGUI.czyIstniejeRzad(dataGridView1, input)) TabelkaGUI.dodajRzad(dataGridView1, input);
+                        if (!TabelkaGUI.czyIstniejeRzad(dataGridView1, input))
+                        {
+                            TabelkaGUI.dodajRzad(dataGridView1, input);
+                            TabelkaGUI.dodajRzad(dataGridView2, input);
+                            TabelkaGUI.dodajRzad(dataGridView3, input);
+                        }
                         else MessageBox.Show("Taki znak już istnieje!");
                     }
                     else
@@ -219,6 +224,8 @@ namespace AutomatZeStosem
         private void button5_Click(object sender, EventArgs e)
         {
             TabelkaGUI.dodajKolumne(dataGridView1, "q" + (TabelkaGUI.pobierzLiczbeStanow(dataGridView1)).ToString());
+            TabelkaGUI.dodajKolumne(dataGridView2, "q" + (TabelkaGUI.pobierzLiczbeStanow(dataGridView2)).ToString());
+            TabelkaGUI.dodajKolumne(dataGridView3, "q" + (TabelkaGUI.pobierzLiczbeStanow(dataGridView3)).ToString());
         }
 
         private void button6_Click(object sender, EventArgs e)
@@ -226,6 +233,8 @@ namespace AutomatZeStosem
             try
             {
                 TabelkaGUI.usunOstatniRzad(dataGridView1);
+                TabelkaGUI.usunOstatniRzad(dataGridView2);
+                TabelkaGUI.usunOstatniRzad(dataGridView3);
             }
             catch (Exception ex)
             {
@@ -238,6 +247,8 @@ namespace AutomatZeStosem
             try
             {
                 TabelkaGUI.usunOstatniaKolumne(dataGridView1);
+                TabelkaGUI.usunOstatniaKolumne(dataGridView2);
+                TabelkaGUI.usunOstatniaKolumne(dataGridView3);
             }
             catch (Exception ex)
             {
