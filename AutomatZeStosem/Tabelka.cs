@@ -33,7 +33,6 @@ namespace AutomatZeStosem
 
         public virtual void wklejStan(List<int> stan, int numerStanu)
         {
-            if (stan.Count != liczbaStanow) throw new Exception("Definicja stanu ma niepoprawny rozmiar!");
             for (int i = 0; i < stan.Count; i++)
             {
                 tabelka[i, numerStanu] = stan[i];
@@ -42,7 +41,6 @@ namespace AutomatZeStosem
 
         public virtual void dodajZnak(List<int> znak, int numerZnaku)
         {
-            if (znak.Count != liczbaZnakow) throw new Exception("Definicja znaku ma niepoprawny rozmiar!");
             for (int i = 0; i < znak.Count; i++)
             {
                 tabelka[numerZnaku, i] = znak[i];
@@ -79,8 +77,10 @@ namespace AutomatZeStosem
                     throw new Exception("Znak końcowy wskazuje na stan inny niż akceptowalny lub nieakceptowalny!");
             }
 
+            wyraz = String.Concat(wyraz, "$");
             List<char> znakiWyrazu = wyraz.ToCharArray().ToList();
-            if (!znakiWyrazu.All(zbiorZnakow.Contains)) throw new Exception("Wyraz wejściowy zawiera niezakodowane znaki!");
+            if (!znakiWyrazu.All(zbiorZnakow.Contains)) 
+                throw new Exception("Wyraz wejściowy zawiera niezakodowane znaki!");
         }
 
         public virtual void wypisz()
