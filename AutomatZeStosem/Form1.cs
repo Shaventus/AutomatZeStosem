@@ -8,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Diagnostics;
 
 
 namespace AutomatZeStosem
@@ -122,7 +123,14 @@ namespace AutomatZeStosem
                     List<int> list = new List<int>();
                     for (int j = 0; j < dataGridView1.Rows.Count - 1; j++)
                     {
-                        list.Add(Int32.Parse(this.dataGridView1[i, j].Value.ToString()));
+                        try
+                        {
+                            list.Add(Int32.Parse(this.dataGridView1[i, j].Value.ToString()));
+                        }
+                        {
+                            MessageBox.Show("Uzupełnij wszystkie pola!");
+                            return;
+                        }
                     }
                     tabelka.wklejStan(list, i);
                 }
@@ -163,6 +171,7 @@ namespace AutomatZeStosem
             }
             catch (Exception ex)
             {
+                Debug.WriteLine(ex.StackTrace.ToString());
                 MessageBox.Show(ex.Message);
             }
         }
