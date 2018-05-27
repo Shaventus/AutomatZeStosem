@@ -127,6 +127,7 @@ namespace AutomatZeStosem
                         {
                             list.Add(Int32.Parse(this.dataGridView1[i, j].Value.ToString()));
                         }
+                        catch (Exception)
                         {
                             MessageBox.Show("Uzupełnij wszystkie pola!");
                             return;
