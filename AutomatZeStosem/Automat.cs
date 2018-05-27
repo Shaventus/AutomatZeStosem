@@ -47,22 +47,19 @@ namespace AutomatZeStosem
                 y = TabelkaGUI.pobierzIndeksZnaku(ptabelkastos, znak.ToString());
                 TabelkaGUI.zaznaczKomorke(ptabelkastos, stan, y);
                 System.Threading.Thread.Sleep(750);
-            }
-
-            if (stan != -1 && stan != -2)
-            {
                 y = TabelkaGUI.pobierzIndeksZnaku(ptabelka, znak.ToString());
                 TabelkaGUI.zaznaczKomorke(ptabelka, stan, y);
                 //System.Threading.Thread.Sleep(250);
+
+                stan = tabelka.pobierzNastepnyStan(stan, znak);
+
+                slist = String.Concat(slist, " Stos: " + stos.Peek().ToString());
+                slist = String.Concat(slist, " Stan: " + stan);
             }
 
-            stan = tabelka.pobierzNastepnyStan(stan, znak);
-
-            slist = String.Concat(slist, " Stos: " + stos.Peek().ToString());
-            slist = String.Concat(slist, " Stan: " + stan);
             if (stan != -2 && stan != -1)
             {
-                y = TabelkaGUI.pobierzIndeksZnaku(pstos, znak.ToString());
+                y = TabelkaGUI.pobierzIndeksZnaku(pstos, stos.Peek().ToString());
                 TabelkaGUI.zaznaczKomorke(pstos, stan, y);
 
                 if (tabelkaStos.pobierzNastepnyStan(stan, znak) == 1)
