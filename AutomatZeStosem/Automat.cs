@@ -110,5 +110,17 @@ namespace AutomatZeStosem
             }
             return false;
         }
+
+        public void waliduj(string wyraz)
+        {
+            try
+            {
+                tabelka.walidacja(wyraz);
+            }
+            catch(Exception e)
+            {
+                throw e;
+            }
+        }
     }
 }

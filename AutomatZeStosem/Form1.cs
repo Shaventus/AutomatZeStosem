@@ -112,51 +112,58 @@ namespace AutomatZeStosem
 
         private void button1_Click(object sender, EventArgs e)
         {
-            // a^n b^n
-            TabelkaStanow tabelka = new TabelkaStanow(dataGridView1.Columns.Count, dataGridView1.Rows.Count - 1, new List<Char> { '$', 'a', 'b' });
-
-            for (int i = 0; i < dataGridView1.Columns.Count; i++)
+            try
             {
-                List<int> list = new List<int>();
-                for (int j = 0; j < dataGridView1.Rows.Count - 1; j++)
+                // a^n b^n
+                TabelkaStanow tabelka = new TabelkaStanow(dataGridView1.Columns.Count, dataGridView1.Rows.Count - 1, new List<Char> { '$', 'a', 'b' });
+
+                for (int i = 0; i < dataGridView1.Columns.Count; i++)
                 {
-                    list.Add(Int32.Parse(this.dataGridView1[i, j].Value.ToString()));
+                    List<int> list = new List<int>();
+                    for (int j = 0; j < dataGridView1.Rows.Count - 1; j++)
+                    {
+                        list.Add(Int32.Parse(this.dataGridView1[i, j].Value.ToString()));
+                    }
+                    tabelka.wklejStan(list, i);
                 }
-                tabelka.wklejStan(list, i);
-            }
-            //TabelkaGUI.dodajRzad(dataGridView1, "aaa");
-            TabelkaStanow tabelkaStos = new TabelkaStanow(dataGridView2.Columns.Count, dataGridView2.Rows.Count - 1, new List<Char> { '$', 'a', 'b' });
+                //TabelkaGUI.dodajRzad(dataGridView1, "aaa");
+                TabelkaStanow tabelkaStos = new TabelkaStanow(dataGridView2.Columns.Count, dataGridView2.Rows.Count - 1, new List<Char> { '$', 'a', 'b' });
 
-            for (int i = 0; i < dataGridView2.Columns.Count; i++)
-            {
-                List<int> list = new List<int>();
-                for (int j = 0; j < dataGridView2.Rows.Count - 1; j++)
+                for (int i = 0; i < dataGridView2.Columns.Count; i++)
                 {
-                    list.Add(Int32.Parse(this.dataGridView2[i, j].Value.ToString()));
+                    List<int> list = new List<int>();
+                    for (int j = 0; j < dataGridView2.Rows.Count - 1; j++)
+                    {
+                        list.Add(Int32.Parse(this.dataGridView2[i, j].Value.ToString()));
+                    }
+                    tabelkaStos.wklejStan(list, i);
                 }
-                tabelkaStos.wklejStan(list, i);
-            }
 
-            TabelkaStos stos = new TabelkaStos(dataGridView3.Columns.Count, dataGridView3.Rows.Count - 1, new List<Char> { '#', 'a', 'b' });
+                TabelkaStos stos = new TabelkaStos(dataGridView3.Columns.Count, dataGridView3.Rows.Count - 1, new List<Char> { '#', 'a', 'b' });
 
-            for (int i = 0; i < dataGridView3.Columns.Count; i++)
-            {
-                List<int> list = new List<int>();
-                for (int j = 0; j < dataGridView3.Rows.Count - 1; j++)
+                for (int i = 0; i < dataGridView3.Columns.Count; i++)
                 {
-                    list.Add(Int32.Parse(this.dataGridView3[i, j].Value.ToString()));
+                    List<int> list = new List<int>();
+                    for (int j = 0; j < dataGridView3.Rows.Count - 1; j++)
+                    {
+                        list.Add(Int32.Parse(this.dataGridView3[i, j].Value.ToString()));
+                    }
+                    stos.wklejStan(list, i);
                 }
-                stos.wklejStan(list, i);
+
+                listView1.Clear();
+                automat = new Automat(tabelka, tabelkaStos, stos);
+                automat.waliduj(wyraz);
+                wynik.Text = "Wynik: " + automat.Operacja(wyraz, dataGridView1, dataGridView2, dataGridView3);
+
+                for (int i = 0; i < automat.PobierzList().Count(); i++)
+                {
+                    listView1.Items.Add(new ListViewItem(automat.PobierzList()[i]));
+                }
             }
-
-            listView1.Clear();
-            automat = new Automat(tabelka, tabelkaStos, stos);
-
-            wynik.Text = "Wynik: " + automat.Operacja(wyraz, dataGridView1, dataGridView2, dataGridView3);
-
-            for(int i = 0; i < automat.PobierzList().Count(); i++)
+            catch (Exception ex)
             {
-                listView1.Items.Add(new ListViewItem(automat.PobierzList()[i]));
+                MessageBox.Show(ex.Message);
             }
         }
 

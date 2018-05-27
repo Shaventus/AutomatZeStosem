@@ -101,5 +101,15 @@ namespace AutomatZeStosem
 
             return -1;
         }
+
+        public static List<char> pobierzListeZnakow(DataGridView tabelka)
+        {
+            List<char> ret = new List<char>();
+            foreach (DataGridViewRow rzad in tabelka.Rows)
+            {
+                ret.Add(Char.Parse(rzad.HeaderCell.Value.ToString()));
+            }
+            return ret;
+        }
     }
 }

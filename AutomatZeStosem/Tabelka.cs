@@ -71,12 +71,16 @@ namespace AutomatZeStosem
             return tabelka[numerZnaku, numerStanu];
         }
 
-        public virtual void validateMe()
+        public virtual void walidacja(string wyraz)
         {
             for (int i = 0; i < liczbaStanow; i++)
             {
-                if (tabelka[i, 0] != -1 || tabelka[i, 0] != -2) throw new Exception("Znak końcowy wskazuje na stan inny niż akceptowalny lub nieakceptowalny!");
+                if (tabelka[0, i] != -1 && tabelka[0, i] != -2)
+                    throw new Exception("Znak końcowy wskazuje na stan inny niż akceptowalny lub nieakceptowalny!");
             }
+
+            List<char> znakiWyrazu = wyraz.ToCharArray().ToList();
+            if (!znakiWyrazu.All(zbiorZnakow.Contains)) throw new Exception("Wyraz wejściowy zawiera niezakodowane znaki!");
         }
 
         public virtual void wypisz()
